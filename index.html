@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SMN Group | Turning Dreams Into Achievements</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =====================
+   Modern UI Theme
+===================== */
+:root{
+  --primary:#96ff4a;
+  --secondary:#c9ff18;
+  --accent:#bcfbfa;
+  --bg:#fafafa;
+  --card:#ffffff;
+  --text:#2b2b2b;
+  --muted:#6b6b6b;
+  --radius:18px;
+  --shadow:0 20px 40px rgba(0,0,0,.08);
+  --shadow-hover:0 30px 60px rgba(0,0,0,.15);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+}
+
+/* =====================
+   Animations
+===================== */
+.reveal,
+.slide-left,
+.slide-right,
+.zoom{
+  opacity:0;
+  transition:all 1s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal{transform:translateY(50px);}
+.slide-left{transform:translateX(-50px);}
+.slide-right{transform:translateX(50px);}
+.zoom{transform:scale(.92);}
+
+.active{
+  opacity:1;
+  transform:none;
+}
+
+/* =====================
+   Header
+===================== */
+header{
+  position:fixed;
+  inset:0 0 auto 0;
+  background:rgba(255,255,255,.9);
+  backdrop-filter:blur(12px);
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  z-index:1000;
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:16px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo-box span{
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:.5px;
+  color:var(--primary);
+}
+
+.menu a{
+  margin-left:26px;
+  text-decoration:none;
+  color:var(--text);
+  font-weight:500;
+  position:relative;
+}
+
+.menu a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:var(--primary);
+  transition:.3s;
+}
+
+.menu a:hover::after{
+  width:100%;
+}
+
+/* =====================
+   Buttons
+===================== */
+.btn{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  padding:12px 28px;
+  border-radius:14px;
+  font-weight:600;
+  text-decoration:none;
+  display:inline-block;
+  box-shadow:0 10px 25px rgba(192, 191, 191, 0.35);
+  transition:.35s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 40px rgba(205, 248, 76, 0.45);
+}
+
+/* =====================
+   Hero
+===================== */
+.hero{
+  margin-top:90px;
+  padding:110px 20px;
+  background:
+    radial-gradient(circle at top right,#fde4ec,transparent 40%),
+    linear-gradient(180deg,#ffffff,#fafafa);
+}
+
+.hero-box{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:60px;
+  align-items:center;
+}
+
+.hero h2{
+  font-size:52px;
+  line-height:1.2;
+  color:var(--accent);
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:var(--muted);
+  margin:22px 0 30px;
+  text-align:justify;
+}
+
+.hero img{
+  width:100%;
+  border-radius:26px;
+  box-shadow:0 30px 70px rgba(144, 144, 143, 0.778);
+  transition:.6s;
+}
+
+.hero img:hover{
+  transform:scale(1.06) rotate(.3deg);
+}
+
+/* =====================
+   Sections
+===================== */
+section{
+  padding:110px 20px;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:70px;
+}
+
+.title h2{
+  font-size:42px;
+  color:var(--accent);
+}
+
+.title p{
+  color:var(--muted);
+  margin-top:8px;
+}
+
+/* =====================
+   Cards
+===================== */
+.cards{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:36px;
+}
+
+.card{
+  background:var(--card);
+  padding:34px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  text-align:center;
+  transition:.45s;
+}
+
+.card:hover{
+  transform:translateY(-14px);
+  box-shadow:var(--shadow-hover);
+}
+
+.card img{
+  width:100%;
+  height:270px;
+  object-fit:cover;
+  border-radius:16px;
+  margin-bottom:18px;
+}
+
+.card h3{
+  color:var(--primary);
+  margin-bottom:6px;
+}
+
+.card p{
+  color:var(--muted);
+}
+
+/* =====================
+   Newsletter
+===================== */
+.newsletter{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  text-align:center;
+  border-radius:40px;
+  margin:0 20px;
+}
+
+.newsletter input{
+  width:260px;
+  padding:14px;
+  border-radius:12px;
+  border:none;
+  outline:none;
+  margin:20px 12px 0 0;
+}
+
+/* =====================
+   Contact
+===================== */
+.contact{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+}
+
+input,textarea{
+  width:100%;
+  padding:14px;
+  margin-bottom:16px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  font-size:14px;
+}
+
+textarea{resize:none;}
+
+/* =====================
+   Footer
+===================== */
+footer{
+  background:#1a1a1a;
+  color:#ccc;
+  text-align:center;
+  padding:50px 20px;
+}
+
+footer p{
+  margin-bottom:10px;
+  font-size:14px;
+}
+
+/* =====================
+   Responsive
+===================== */
+@media(max-width:900px){
+  .hero-box,
+  .contact{
+    grid-template-columns:1fr;
+  }
+
+  .hero h2{
+    font-size:38px;
+    text-align:center;
+  }
+
+  .menu{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo-box"><span>SMN GROUP</span></div>
+    <div class="menu">
+      <a href="1.html">Home</a>
+      <a href="#">About</a>
+      <a href="#">Courses</a>
+      <a href="#">Free Tests</a>
+      <a href="#" class="btn">Login</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-box">
+    <div class="slide-left reveal">
+      <h2>Turning Dreams Into Achievements</h2>
+      <p>
+        <strong>SMN GROUP</strong> is committed to transforming aspirants into achievers through a structured online learning ecosystem. We provide complete preparation for UPSC, BPSC, UPPSC, MPPSC, JPSC and other State PSCs, along with CBSE, Bihar, UP and other Board exams. Our courses also cover national entrance and eligibility tests like CLAT, CUET, NET, CTET, STET, Banking exams (IBPS, SBI, RBI), Central/State Government recruitment tests, and major Engineering and Medical entrance examinations.
+
+With premium study material, chapter-wise notes, focused practice sets, structured test series and full mock tests that reflect real exam patterns, SMN GROUP ensures strong conceptual clarity and consistent performance improvement. Backed by a 95%+ success probability and limited-student batches, we offer personalized guidance, timely doubt support, and disciplined preparation. Our mission is to provide quality education at a nominal price, enabling students from all backgrounds to achieve success—often in their first attempt.
+      </p>
+      <a href="#" class="btn">Explore Courses</a>
+    </div>
+
+    <img class="slide-right reveal"
+      src="https://cdn-diy-public.classplus.co/staging/appConfig/SM786657_1650525000609.png">
+  </div>
+</section>
+
+<section>
+  <div class="title reveal">
+    <h2>OUR TEAM</h2>
+    <p>Brilliant Minds at Work</p>
+  </div>
+
+  <div class="cards">
+    <div class="card zoom reveal">
+      <img src="https://cdn-diy-public.classplus.co/prod/NKVPHOTO1_1762627387410.png">
+      <h3>Dr. N. K. Verma</h3>
+      <p>10+ Years Experience</p>
+    </div>
+
+    <div class="card zoom reveal">
+      <img src="https://cdn-diy-public.classplus.co/prod/Screenshot20251109at12_1762627418659.png">
+      <h3>Niloo Kumari</h3>
+      <p>10+ Years Experience</p>
+    </div>
+
+    <div class="card zoom reveal">
+      <img src="https://cdn-diy-public.classplus.co/prod/Screenshot20251109at12_1762627426835.png">
+      <h3>Cmdr. Vinay Kumar</h3>
+      <p>10+ Years Experience</p>
+    </div>
+
+    <div class="card zoom reveal">
+      <img src="https://cdn-diy-public.classplus.co/prod/Principal1_1762627484377.jpeg">
+      <h3>Dr. Babita Kumari</h3>
+      <p>25+ Years Experience</p>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="title reveal">
+    <h2>Smart Learning • Superior Results</h2>
+    <p>Technology-driven education with mentorship</p>
+  </div>
+  <input type="email" placeholder="Enter Email">
+  <a href="#" class="btn">Subscribe</a>
+</section>
+
+<section>
+  <div class="title reveal">
+    <h2>Contact Us</h2>
+    <p>Get expert guidance today</p>
+  </div>
+
+  <div class="contact">
+    <div class="card slide-left reveal">
+      <h3>Our Office</h3>
+      <p>
+        2006-2ND FLOOR, GRAND PLAZA<br>
+        P.O-G.P.O, P.S-KOTWALI<br>
+        FRASER ROAD, NEAR DAKBUNGLOW CHAURAHA<br>
+        PATNA, BIHAR – 800001
+      </p>
+      <p>📞 +91-9117030259</p>
+      <p>📧 info@smngroup.co.in</p>
+    </div>
+
+    <div class="card slide-right reveal">
+      <h3>Send Message</h3>
+      <input placeholder="Name">
+      <input placeholder="Phone">
+      <input placeholder="Email">
+      <textarea placeholder="Message"></textarea>
+      <a href="#" class="btn">Contact Now</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    2006-2ND FLOOR, GRAND PLAZA, P.O-G.P.O, P.S-KOTWALI<br>
+    FRASER ROAD, NEAR DAKBUNGLOW CHAURAHA, PATNA, BIHAR – 800001
+  </p>
+  <p>📞 +91-9117030259 | 📧 info@smngroup.co.in</p>
+  <p>© 2025 All Rights Reserved</p>
+  <p>Powered by Classplus</p>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+
+function revealOnLoad() {
+  reveals.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add('active');
+    }
+  });
+}
+
+// Run on load
+window.addEventListener('load', revealOnLoad);
+
+// Run on scroll
+window.addEventListener('scroll', revealOnLoad);
+</script>
+
+</body>
+</html>
